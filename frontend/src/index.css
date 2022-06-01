@@ -20,3 +20,35 @@ header a {
   text-decoration: none;
   font-weight: bold;
 }
+
+main {
+  padding: 1rem;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* align-items: center;
+  padding: 1rem; */
+}
+
+.product {
+  margin: 1rem;
+  
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.product img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+}
+
+.product-info {
+  padding: 1rem;
+}
