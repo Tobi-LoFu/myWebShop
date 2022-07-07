@@ -6,7 +6,10 @@ const app = express();
 app.get('/api/products', (req, res) => {
   res.send(data.products);
 });
+
 app.get('/api/products/slug/:slug', (req, res) => {
+  console.log('GET /api/products/slug/:slug');
+
   const product = data.products.find(product => product.slug === req.params.slug);
   if(product) {
     res.send(product);
@@ -14,6 +17,19 @@ app.get('/api/products/slug/:slug', (req, res) => {
     res.status(404).send({message: 'Product not found'});
   }
   res.send(data.products);
+});
+
+app.get('/api/products/:id', (req, res) => {
+  console.log("GET /api/products/:id");
+    const product = data.products.find(
+        (product) => product._id === req.params.id
+    );
+    if (product) {
+      res.send(product);
+    } else {
+      res.status(404).send({ message: 'Product not found' });
+    }
+    res.send(data.products);
 });
 
 const port = process.env.PORT || 5000;
