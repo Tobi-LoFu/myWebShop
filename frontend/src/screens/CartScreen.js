@@ -5,19 +5,19 @@ import Row from 'react-bootstrap/esm/Row';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/esm/ListGroup';
 import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import MessageBox from '../components/MessageBox';
 import { Store } from '../Store';
 import axios from 'axios';
 
 function CartScreen() {
+    const navigate = useNavigate();
     const { state, dispatch: ctxDispatch } = useContext(Store);
     const {
         cart: { cartItems },
     } = state;
 
     const updateCartHandler = async (item, quantity) => {
-        console.log("updateCartHandler");
         const { data } = await axios.get(`/api/products/${item._id}`);
         if (data.countInStock < quantity) {
             window.alert('Sorry. Product is out of stock');
@@ -27,13 +27,15 @@ function CartScreen() {
             type: 'ADD_TO_CART',
             payload: { ...item, quantity },
         });
-        console.log(item, data, quantity);
     };
 
     const removeItemHandler = (item) => {
-        console.log("removeItemHandler", item);
         ctxDispatch({ type: 'REMOVE_FROM_CART', payload: item });
     }; 
+
+    const checkoutHandler = () => {
+        navigate('/signin?redirect=/shipping');
+    }
 
     return (
         <div>
@@ -140,6 +142,7 @@ function CartScreen() {
                                         <Button
                                             type="button"
                                             variant="primary"
+                                            onClick={checkoutHandler}
                                             disabled={cartItems.length === 0}
                                         >
                                             Checkout
