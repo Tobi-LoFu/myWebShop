@@ -32,19 +32,19 @@ function HomeScreen() {
     //const [products, setProducts] = useState([]);
 
     useEffect(() => {
-      const fetchData = async () => {
-				dispatch({type: 'FETCH_REQUEST'});
-				try {
-					const result = await axios.get(
-                        '/api/products'
-                    );
-					dispatch({type: 'FETCH_SUCCESS', payload: result.data})
-				} catch (error) {
-					dispatch({type: 'FETCH_FAIL', payload: error.message})
-				}
-       // setProducts(result.data)
-      };
-      fetchData();
+        const fetchData = async () => {
+			dispatch({type: 'FETCH_REQUEST'});
+			try {
+				const result = await axios.get(
+                    '/api/products'
+                );
+				dispatch({type: 'FETCH_SUCCESS', payload: result.data})
+			} catch (error) {
+				dispatch({type: 'FETCH_FAIL', payload: error.message})
+			}
+        // setProducts(result.data)
+        };
+        fetchData();
     }, [])
 
 

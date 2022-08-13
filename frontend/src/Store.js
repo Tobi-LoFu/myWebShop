@@ -5,7 +5,7 @@ export const Store = createContext();
 const initialState = {
     cart: {
         cartItems: [],
-    }   ,
+    },
 };
 
 function reducer(state, action) {
@@ -13,14 +13,14 @@ function reducer(state, action) {
         case "ADD_TO_CART":
             const newItem = action.payload;
             const existItem = state.cart.cartItems.find(
-                item => item.id === newItem.id
+                (item) => item._id === newItem._id
             );
             const cartItems = existItem
-                ? state.cart.cartItems.map(item =>
+                ? state.cart.cartItems.map((item) =>
                         item._id === existItem._id ? newItem : item
                     )
                 : [...state.cart.cartItems, newItem];
-            return { ...state, cart: { cartItems } };
+            return { ...state, cart: { ...state.cart, cartItems } };
            
         case "REMOVE_FROM_CART":
             return {
@@ -28,7 +28,7 @@ function reducer(state, action) {
                 cart: {
                     ...state.cart,
                     cartItems: state.cart.cartItems.filter(
-                        (item) => item.id !== action.payload
+                        (item) => item._id !== action.payload._id
                     ),
                 },
             };
