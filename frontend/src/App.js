@@ -13,7 +13,10 @@ import { Store } from './Store';
 import { useContext } from 'react';
 import CartScreen from './screens/CartScreen';
 import SigninScreen from './screens/SigninScreen';
+import SignupScreen from './screens/SignupScreen';
 import ShippingAddressScreen from './screens/ShippingAddressScreen';
+import PaymentMethodScreen from './screens/PaymentMethodScreen';
+import PlaceOrderScreen from './screens/PlaceOrderScreen';
 
 
 
@@ -25,6 +28,7 @@ function App() {
         ctxDispatch({type: 'USER_SIGNOUT'});
         localStorage.removeItem('userInfo');
         localStorage.removeItem('shippingAddress');
+        localStorage.removeItem('paymentMethod');
     }
 
     return (
@@ -91,7 +95,19 @@ function App() {
                             />
                             <Route path="/cart" element={<CartScreen />} />
                             <Route path="/signin" element={<SigninScreen />} />
-                            <Route path="/shipping" element={<ShippingAddressScreen />} />
+                            <Route path="/signup" element={<SignupScreen />} />
+                            <Route
+                                path="/shipping"
+                                element={<ShippingAddressScreen />}
+                            />
+                            <Route
+                                path="/payment"
+                                element={<PaymentMethodScreen />}
+                            />
+                            <Route
+                                path="/placeorder"
+                                element={<PlaceOrderScreen />}
+                            />
                             <Route path="/" element={<HomeScreen />} />
                         </Routes>
                     </Container>
