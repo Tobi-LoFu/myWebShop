@@ -46,11 +46,14 @@ function CartScreen() {
             <Row>
                 <Col md={8}>
                     {cartItems.length === 0 ? (
-                        <MessageBox>
-                            Your cart is empty. <Link to="/">Go Shopping</Link>
-                        </MessageBox>
+                        <div className="frame">
+                            <MessageBox>
+                                Your cart is empty.{' '}
+                                <Link to="/">Go Shopping</Link>
+                            </MessageBox>
+                        </div>
                     ) : (
-                        <ListGroup>
+                        <ListGroup className="frame">
                             {cartItems.map((item) => (
                                 <ListGroup.Item key={item._id}>
                                     <Row className="align-items-center">
@@ -119,7 +122,7 @@ function CartScreen() {
                     )}
                 </Col>
                 <Col md={4}>
-                    <Card>
+                    <Card className="frame">
                         <Card.Body>
                             <ListGroup variant="flush">
                                 <ListGroup.Item>
@@ -129,8 +132,8 @@ function CartScreen() {
                                             (acc, cur) => acc + cur.quantity,
                                             0
                                         )}{' '}
-                                        items) :
-                                        €{cartItems.reduce(
+                                        items) : €
+                                        {cartItems.reduce(
                                             (acc, cur) =>
                                                 acc + cur.price * cur.quantity,
                                             0

@@ -47,14 +47,13 @@ main {
   color: #ffc107;
 }
 
-.product {
+.frame {
   margin: 1rem;
-  
-  background-color: #fff;
+  background-color: #ffffff;
   border-radius: 0.5rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
-  transition: all 0.2s ease-in-out;
-  cursor: pointer;
+  /* transition: all 0.2s ease-in-out; */
+  /* cursor: pointer; */
 }
 
 .product img {
