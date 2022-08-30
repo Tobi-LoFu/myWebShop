@@ -7,6 +7,7 @@ import bcrypt from 'bcryptjs';
 const userRouter = express.Router();
 
 userRouter.post('/signin', expressAsyncHandler(async(req, res) =>{
+    console.log('POST /api/users/signin');
     const user = await User.findOne({email: req.body.email});
     if (user) {
         if (bcrypt.compareSync(req.body.password, user.password)) {
@@ -24,6 +25,7 @@ userRouter.post('/signin', expressAsyncHandler(async(req, res) =>{
 }));
 
 userRouter.post('/signup', expressAsyncHandler(async(req, res) => {
+    console.log('POST /api/users/signup');
     const newUser = new User({
         name: req.body.name,
         email: req.body.email,
@@ -42,6 +44,7 @@ userRouter.post('/signup', expressAsyncHandler(async(req, res) => {
 userRouter.put(
     '/profile', isAuth,
     expressAsyncHandler(async (req, res) => {
+        console.log('PUT /api/users/profile');
         const user = await User.findById(req.user._id)
         if (user) {
             user.name = req.body.name || user.name;

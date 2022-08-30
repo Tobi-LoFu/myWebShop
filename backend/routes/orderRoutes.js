@@ -6,6 +6,7 @@ import Order from '../models/orderModel.js';
 const orderRouter = express.Router();
 
 orderRouter.post('/', isAuth, expressAsyncHandler(async(req, res) => {
+    console.log('POST /api/orders');
     const newOrder = new Order({
         orderItems: req.body.orderItems.map((x) => ({ ...x, product: x._id })),
         shippingAddress: req.body.shippingAddress,
@@ -25,6 +26,7 @@ orderRouter.get(
     '/mine',
     isAuth,
     expressAsyncHandler(async (req, res) => {
+        console.log('GET /api/orders/mine');
         const orders = await Order.find({ user: req.user._id });
         res.send(orders);
     })
@@ -34,6 +36,7 @@ orderRouter.get(
     '/:id',
     isAuth,
     expressAsyncHandler(async (req, res) => {
+        console.log('GET /api/orders/:id');
         const order = await Order.findById(req.params.id);
         if (order) {
             res.send(order);
@@ -44,6 +47,7 @@ orderRouter.get(
 );
 
 orderRouter.put(`/:id/pay`, isAuth, expressAsyncHandler (async (req, res) => {
+    console.log('GET /api/orders/:id/pay');
     const order = await Order.findById(req.params.id);
     if (order) {
         (order.isPaid = true),

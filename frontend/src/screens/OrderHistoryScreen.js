@@ -52,14 +52,15 @@ function OrderHistoryScreen() {
         };
         fetchData();
     }, [userInfo]);
-
+    
+    console.log(userInfo);
     return (
       <div>
           <Helmet>
-              <title>Order History</title>
+              <title>Oder History</title>
           </Helmet>
 
-          <h1>Order History</h1>
+          <h1>Oder History</h1>
           {loading ? (
               <LoadingBox></LoadingBox>
           ) : error ? (
@@ -80,7 +81,7 @@ function OrderHistoryScreen() {
                     {orders.map((order) => {
                         return (
                         <tr key={order._id}>
-                            <td>{order.id}</td>
+                            <td>{order._id}</td>
                             <td>{order.createdAt.substring(0, 10)}</td>
                             <td>€{' '}{order.totalPrice.toFixed(2)}</td>
                             <td>
