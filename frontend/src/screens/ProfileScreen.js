@@ -95,6 +95,7 @@ function ProfileScreen() {
                     <Form.Label>Password</Form.Label>
                     <Form.Control
                         type="password"
+                        value={password}
                         onChange={(e) => {
                             setPassword(e.target.value);
                         }}
@@ -104,13 +105,14 @@ function ProfileScreen() {
                     <Form.Label>Confirm Password</Form.Label>
                     <Form.Control
                         type="password"
+                        value={confirmPassword}
                         onChange={(e) => {
                             setConfirmPassword(e.target.value);
                         }}
                     />
                 </Form.Group>
-                <div className='mb-3'>
-                    <Button type='submit'>Update Profile</Button>
+                <div className="mb-3">
+                    <Button type="submit">Update Profile</Button>
                 </div>
             </Form>
         </div>
