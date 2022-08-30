@@ -1,0 +1,21 @@
+{
+  "name": "mywebshop",
+  "version": "1.0.0",
+  "description": "1. Create React App 2. Create github repository",
+  "main": "index.js",
+  "scripts": {
+    "build": "cd backend && npm install && cd ../frontend && npm install && npm run build",
+    "start": "node backend/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tobi-LoFu/myWebShop.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tobi-LoFu/myWebShop/issues"
+  },
+  "homepage": "https://github.com/Tobi-LoFu/myWebShop#readme"
+}
