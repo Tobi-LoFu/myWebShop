@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useReducer } from 'react'
-import { Button, Card, Col, ListGroup, Row, Toast } from 'react-bootstrap';
+import { Button, Card, Col, ListGroup, Row } from 'react-bootstrap';
 import { Helmet } from 'react-helmet-async';
 import { Link, useNavigate } from 'react-router-dom';
 import CheckOutSteps from '../components/CheckOutSteps';
