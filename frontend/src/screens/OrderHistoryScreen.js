@@ -57,10 +57,10 @@ function OrderHistoryScreen() {
     return (
       <div>
           <Helmet>
-              <title>Oder History</title>
+              <title>Order History</title>
           </Helmet>
 
-          <h1>Oder History</h1>
+          <h1>Order History</h1>
           {loading ? (
               <LoadingBox></LoadingBox>
           ) : error ? (
