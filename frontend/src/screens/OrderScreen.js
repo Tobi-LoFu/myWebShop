@@ -130,7 +130,6 @@ function OrderScreen() {
             };
             loadPaypalScript();
         }
-        console.log(order);
     }, [order, orderId, userInfo, navigate, paypalDispatch, successPay]);
     
  

@@ -6,11 +6,12 @@ import User from '../models/userModel.js';
 const seedRouter = express.Router();
 
 seedRouter.get('/', async(req, res) => {
+    console.log('GET /api/seed');
     await Product.deleteMany({});
     const createdProducts = await Product.insertMany(data.products);
     await User.deleteMany({});
     const createdUsers = await User.insertMany(data.users);
-    res.send({createdProducts, createdUsers});
+    res.send({ createdProducts, createdUsers });
 } );
 
 export default seedRouter;

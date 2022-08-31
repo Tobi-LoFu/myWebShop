@@ -23,10 +23,10 @@ orderRouter.post('/', isAuth, expressAsyncHandler(async(req, res) => {
 }));
 
 orderRouter.get(
-    '/mine',
+    '/orderhistory',
     isAuth,
     expressAsyncHandler(async (req, res) => {
-        console.log('GET /api/orders/mine');
+        console.log('GET /api/orders/orderhistory');
         const orders = await Order.find({ user: req.user._id });
         res.send(orders);
     })

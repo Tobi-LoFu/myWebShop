@@ -69,7 +69,7 @@ function App() {
                                                     User Profile
                                                 </NavDropdown.Item>
                                             </LinkContainer>
-                                            <LinkContainer to="/orders/mine">
+                                            <LinkContainer to="/orders/orderhistory">
                                                 <NavDropdown.Item>
                                                     Order History
                                                 </NavDropdown.Item>
@@ -116,7 +116,7 @@ function App() {
                                 element={<PlaceOrderScreen />}
                             />
                             <Route
-                                path="/orders/mine"
+                                path="/orders/orderhistory"
                                 element={<OrderHistoryScreen />}
                             />
                             <Route
