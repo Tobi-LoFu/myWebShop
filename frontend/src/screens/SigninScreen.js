@@ -61,7 +61,7 @@ function SigninScreen() {
                     <Form.Label>Password</Form.Label>
                     <Form.Control
                         type="password"
-                        placeholder="Enter password"
+                        placeholder="Enter your password"
                         required
                         onChange={(e) => setPassword(e.target.value)}
                     />
