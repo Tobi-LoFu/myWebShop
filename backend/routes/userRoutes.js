@@ -31,14 +31,17 @@ userRouter.post('/signup', expressAsyncHandler(async (req, res) => {
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password),
     })
+    console.log('newUser',newUser);        
+    
     const user = await newUser.save();
-    res.send({
+    res.status(201).send({
         _id: user._id,
         name: user.name,
         email: user.email,
         isAdmin: user.isAdmin,
         token: generateToken(user),
     });
+    console.log('user', user); 
 }))
 
 userRouter.put(
