@@ -33,7 +33,7 @@ userRouter.post('/signup', expressAsyncHandler(async (req, res) => {
     })
     console.log('newUser',newUser);        
     
-    const user = await newUser.create();
+    const user = await newUser.save();
     res.status(201).send({
         _id: user._id,
         name: user.name,
