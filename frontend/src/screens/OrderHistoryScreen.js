@@ -97,7 +97,7 @@ function OrderHistoryScreen() {
                                     <td>
                                         <Button
                                             type="button"
-                                            variant="light"
+                                            variant="danger"
                                             onClick={() => {
                                                 navigate(`/order/${order._id}`);
                                             }}
