@@ -1,12 +1,12 @@
 import React from 'react'
 
-function Rating({rating, numReviews}) {
+function Rating({rating, numReviews, caption }) {
   return (
       <div className="rating">
           <span>
               <i
                   className={
-                      rating > 1
+                      rating >= 1
                           ? 'fas fa-star'
                           : rating >= 0.5
                           ? 'fas fa-star-half-alt'
@@ -17,7 +17,7 @@ function Rating({rating, numReviews}) {
           <span>
               <i
                   className={
-                      rating > 2
+                      rating >= 2
                           ? 'fas fa-star'
                           : rating >= 1.5
                           ? 'fas fa-star-half-alt'
@@ -28,7 +28,7 @@ function Rating({rating, numReviews}) {
           <span>
               <i
                   className={
-                      rating > 3
+                      rating >= 3
                           ? 'fas fa-star'
                           : rating >= 2.5
                           ? 'fas fa-star-half-alt'
@@ -39,7 +39,7 @@ function Rating({rating, numReviews}) {
           <span>
               <i
                   className={
-                      rating > 4
+                      rating >= 4
                           ? 'fas fa-star'
                           : rating >= 3.5
                           ? 'fas fa-star-half-alt'
@@ -50,7 +50,7 @@ function Rating({rating, numReviews}) {
           <span>
               <i
                   className={
-                      rating > 5
+                      rating >= 5
                           ? 'fas fa-star'
                           : rating >= 4.5
                           ? 'fas fa-star-half-alt'
@@ -58,7 +58,11 @@ function Rating({rating, numReviews}) {
                   }
               />
           </span>
-          <span> {numReviews} reviews</span>
+          {caption ? (
+              <span>{caption}</span>
+            ) : (
+                <span>{' ' + numReviews + ' reviews'}</span>
+            )}
       </div>
   );
 }

@@ -29,7 +29,7 @@ main {
   flex: 1;
 }
 
-.btn-primary {
+.btn-primary, .btn-outline-primary {
   background-color: #ffc107;
   color: #181818;
   border-color: #404040;
@@ -96,18 +96,23 @@ main {
 }
 
 .side-navbar {
-  background-color: #404040;
-  color: #fff;
-  height: 100%;
   width: 250px;
+  height: 100%;
   position: absolute;
-  top: 0;
   left: -250px;
+  background-color: #212529;
   transition: all 0.5s ease;
+}
+.side-navbar a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 1rem;
+  border-bottom: 1px solid #404040;
 }
 
 .site-container {
-  transition: 0.4s;
+  transition: 0.5s ease;
 }
 
 .active-cont {
@@ -116,4 +121,8 @@ main {
 
 .active-nav {
   left: 0;
+}
+
+.text-bold {
+  font-weight: bold;
 }

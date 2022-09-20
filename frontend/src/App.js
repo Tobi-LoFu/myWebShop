@@ -24,6 +24,8 @@ import { Button } from 'react-bootstrap';
 import { useEffect } from 'react';
 import { getError } from './utils';
 import axios from 'axios';
+import SearchBox from './components/SearchBox';
+import SearchScreen from './screens/SearchScreen';
 
 
 
@@ -69,8 +71,10 @@ function App() {
                 <header>
                     <Navbar bg="dark" variant="dark" expand="lg">
                         <Container>
-                            <Button variant='dark'
-                                    onClick={() => setSidebarIsOpen(!sidebarIsOpen)}>
+                            <Button
+                                variant="dark"
+                                onClick={() => setSidebarIsOpen(!sidebarIsOpen)}
+                            >
                                 <i className="fas fa-bars"></i>
                             </Button>
                             <LinkContainer to="/">
@@ -78,6 +82,7 @@ function App() {
                             </LinkContainer>
                             <Navbar.Toggle aria-controls="basic-navbar-nav" />
                             <Navbar.Collapse id="basic-navbar-nav">
+                                <SearchBox />
                                 <Nav className="me-auto w-100 justify-content-end">
                                     <Link to="/cart" className="nav-link">
                                         Cart
@@ -124,16 +129,25 @@ function App() {
                         </Container>
                     </Navbar>
                 </header>
-                <div className={sidebarIsOpen ? 'active-nav side-navbar d-flex justify-content-between flex-wrap flex-column' : 'side-navbar d-flex justify-content-between flex-wrap flex-column'}>
+                <div
+                    className={
+                        sidebarIsOpen
+                            ? 'active-nav side-navbar d-flex justify-content-between flex-wrap flex-column'
+                            : 'side-navbar d-flex justify-content-between flex-wrap flex-column'
+                    }
+                >
                     <Nav className="flex-column text-white w-100 p-2">
                         <Nav.Item>
                             <strong>Categories</strong>
                         </Nav.Item>
                         {categories.map((category) => (
                             <Nav.Item key={category}>
-                                <Link.Container to={`/search?category/${category}`} onClick={() => setSidebarIsOpen(false)}>
+                                <LinkContainer
+                                    to={`/search?category/${category}`}
+                                    onClick={() => setSidebarIsOpen(false)}
+                                >
                                     <Nav.Link>{category}</Nav.Link>
-                                </Link.Container>
+                                </LinkContainer>
                             </Nav.Item>
                         ))}
                     </Nav>
@@ -147,6 +161,7 @@ function App() {
                                 element={<ProductScreen />}
                             />
                             <Route path="/cart" element={<CartScreen />} />
+                            <Route path="/search" element={<SearchScreen />} />
                             <Route path="/signin" element={<SigninScreen />} />
                             <Route path="/signup" element={<SignupScreen />} />
                             <Route
