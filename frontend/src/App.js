@@ -26,6 +26,12 @@ import { getError } from './utils';
 import axios from 'axios';
 import SearchBox from './components/SearchBox';
 import SearchScreen from './screens/SearchScreen';
+import ProtectedRoute from './components/ProtectedRoute';
+import DashboardScreen from './screens/DashboardScreen';
+import AdminRoute from './components/AdminRoute';
+import ProductListScreen from './screens/ProductListScreen';
+import OrderListScreen from './screens/OrderListScreen';
+import UserListScreen from './screens/UserListScreen';
 
 
 
@@ -124,6 +130,33 @@ function App() {
                                             Sign In
                                         </Link>
                                     )}
+                                    {userInfo && userInfo.isAdmin && (
+                                        <NavDropdown
+                                            title="Admin"
+                                            id="admin-nav-dropdown"
+                                        >
+                                            <LinkContainer to="/admin/dashboard">
+                                                <NavDropdown.Item>
+                                                    Dashboard
+                                                </NavDropdown.Item>
+                                            </LinkContainer>
+                                            <LinkContainer to="/admin/products">
+                                                <NavDropdown.Item>
+                                                    Products
+                                                </NavDropdown.Item>
+                                            </LinkContainer>
+                                            <LinkContainer to="/admin/orders">
+                                                <NavDropdown.Item>
+                                                    Orders
+                                                </NavDropdown.Item>
+                                            </LinkContainer>
+                                            <LinkContainer to="/admin/users">
+                                                <NavDropdown.Item>
+                                                    Users
+                                                </NavDropdown.Item>
+                                            </LinkContainer>
+                                        </NavDropdown>
+                                    )}
                                 </Nav>
                             </Navbar.Collapse>
                         </Container>
@@ -178,15 +211,60 @@ function App() {
                             />
                             <Route
                                 path="/orders/orderhistory"
-                                element={<OrderHistoryScreen />}
+                                element={
+                                    <ProtectedRoute>
+                                        <OrderHistoryScreen />
+                                    </ProtectedRoute>
+                                }
                             />
                             <Route
                                 path="/orders/:id"
-                                element={<OrderScreen />}
+                                element={
+                                    <ProtectedRoute>
+                                        <OrderScreen />
+                                    </ProtectedRoute>
+                                }
                             />
                             <Route
                                 path="/profile"
-                                element={<ProfileScreen />}
+                                element={
+                                    <ProtectedRoute>
+                                        <ProfileScreen />
+                                    </ProtectedRoute>
+                                }
+                            />
+                            {/** Admin Routes */}
+                            <Route
+                                path="/admin/dashboard"
+                                element={
+                                    <AdminRoute>
+                                        <DashboardScreen />
+                                    </AdminRoute>
+                                }
+                            />
+                            <Route
+                                path="/admin/products"
+                                element={
+                                    <AdminRoute>
+                                        <ProductListScreen />
+                                    </AdminRoute>
+                                }
+                            />
+                            <Route
+                                path="/admin/orders"
+                                element={
+                                    <AdminRoute>
+                                        <OrderListScreen />
+                                    </AdminRoute>
+                                }
+                            />
+                            <Route
+                                path="/admin/users"
+                                element={
+                                    <AdminRoute>
+                                        <UserListScreen />
+                                    </AdminRoute>
+                                }
                             />
                             <Route path="/" element={<HomeScreen />} />
                         </Routes>
